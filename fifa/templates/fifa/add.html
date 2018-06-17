@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="{% static 'fifa/jquery.js' %}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{% static 'fifa/bootstrap.min.css' %}">
+    <title>Add match</title>
+</head>
+<body>
+
+    <a href="/fifa"><button class="btn btn-default" style="position: absolute; top: 0">Home</button></a>
+    <center><h2>Create New Match</h2></center>
+    <form action="" method="POST">
+        {% csrf_token %}
+        
+        <div class="row" style="margin-top: 200px; width: 1000px; margin-left: 250px;">
+            <div class="form-group col-lg-4">
+                <label for="t1">Select Team 1</label>
+                <select name="team1" class="form-control" id="team1">
+                    {% for team in all_teams %}
+                    <option value="{{team}}" >{{team}}</option>
+                    {%endfor%}
+            </select>
+        </div>
+            
+            <br><br>
+    
+        <div class="form-group col-lg-4">
+            <label for="t2">Select Team 2</label>
+            <select name="team2" class="form-control" id="team2">
+                {% for team in all_teams %}
+                <option value="{{team}}" >{{team}}</option>
+                {%endfor%}
+            </select>
+        </div>
+            
+        <div class="form-group col-lg-4">
+            <label for="datebox">Enter Date</label><br>
+            <input name="date" type = "text" id = "datebox" style="padding:5px" autocomplete="off" required>
+            <button type="submit" class="btn btn-success offset-lg-1">Create</button>
+        </div>
+
+      </form>
+    <script>
+
+        $(function() {
+           $( "#datebox" ).datepicker();
+        });
+
+    </script>
+
+</body>
+</html>
