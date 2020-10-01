@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class FifaConfig(AppConfig):
-    name = 'fifa'
+    name = 'Fifa20'
